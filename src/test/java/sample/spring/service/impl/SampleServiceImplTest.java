@@ -34,8 +34,8 @@ public class SampleServiceImplTest {
     @Test
     public void shouldReturnPersonalDetailsWhenFoundInDb() {
         PersonalDetails personalDetails = objectMapper.readValue(new ClassPathResource("PersonalDetails.json").getFile(), PersonalDetails.class);
-        when(personalDetailsRepository.findById("1a")).thenReturn(Optional.of(personalDetails));
-        PersonalDetailsDto expectedDto = sampleService.execute("1a");
+        when(personalDetailsRepository.findById("2a")).thenReturn(Optional.of(personalDetails));
+        PersonalDetailsDto expectedDto = sampleService.execute("2a");
         assertThat(expectedDto).usingRecursiveComparison().ignoringActualNullFields().isEqualTo(personalDetails);
     }
 }
