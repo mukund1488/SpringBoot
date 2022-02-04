@@ -1,15 +1,22 @@
 package sample.spring.service.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import sample.spring.model.PersonalDetails;
+import sample.spring.repository.PersonalDetailsRepository;
 import sample.spring.service.SampleService;
 
+@Slf4j
+@Component
 public class SampleServiceImpl implements SampleService {
 
-    Logger logger = LoggerFactory.getLogger(SampleServiceImpl.class);
+
+    @Autowired
+    private PersonalDetailsRepository personalDetailsRepository;
 
     @Override
-    public void execute() {
-        logger.info("Hello from service");
+    public PersonalDetails execute(String id) {
+        return personalDetailsRepository.findById(id).orElse(null);
     }
 }

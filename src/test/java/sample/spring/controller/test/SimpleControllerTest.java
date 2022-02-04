@@ -26,9 +26,9 @@ public class SimpleControllerTest {
     @Test
     public void shouldReturn200StatusWhenEndpointIsCalled() {
         try {
-            mockMvc.perform(get("/exec"))
+            mockMvc.perform(get("/exec?id=1a"))
                     .andExpect(status().is2xxSuccessful());
-            verify(sampleService, times(1)).execute();
+            verify(sampleService, times(1)).execute("1a");
         } catch (Exception ex) {
             fail();
         }

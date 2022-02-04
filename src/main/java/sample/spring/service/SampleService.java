@@ -1,5 +1,7 @@
 package sample.spring.service;
 
+import sample.spring.model.PersonalDetails;
+
 public interface SampleService {
-    void execute();
+    PersonalDetails execute(String id);
 }
