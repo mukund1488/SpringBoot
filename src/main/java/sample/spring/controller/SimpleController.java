@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import sample.spring.dto.PersonalDetailsDto;
 import sample.spring.model.PersonalDetails;
 import sample.spring.service.SampleService;
 
@@ -15,7 +16,7 @@ public class SimpleController {
     private SampleService sampleService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/exec")
-    public PersonalDetails execute(@RequestParam String id) {
+    public PersonalDetailsDto execute(@RequestParam String id) {
         return sampleService.execute(id);
     }
 
