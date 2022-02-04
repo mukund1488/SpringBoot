@@ -9,10 +9,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import sample.spring.service.SampleService;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@AutoConfigureMockMvc
 @WebMvcTest
 public class SimpleControllerTest {
 
@@ -27,6 +28,7 @@ public class SimpleControllerTest {
         try {
             mockMvc.perform(get("/exec"))
                     .andExpect(status().is2xxSuccessful());
+            verify(sampleService, times(1)).execute();
         } catch (Exception ex) {
             fail();
         }
