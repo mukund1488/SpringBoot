@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Data
 @AllArgsConstructor
-public class SimpleServiceException extends Exception {
+public class PersonalDetailsException extends Exception {
     private String message;
     private HttpStatus httpStatus;
 }

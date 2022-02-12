@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class SimpleServiceError {
+public class PersonalDetailsError {
     private String errorMessage;
 }

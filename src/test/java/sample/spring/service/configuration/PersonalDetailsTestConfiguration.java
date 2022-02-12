@@ -3,14 +3,14 @@ package sample.spring.service.configuration;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import sample.spring.service.SampleService;
-import sample.spring.service.impl.SampleServiceImpl;
+import sample.spring.service.PersonalDetailsService;
+import sample.spring.service.impl.PersonalDetailsServiceImpl;
 
 @TestConfiguration
-public class SampleServiceTestConfiguration {
+public class PersonalDetailsTestConfiguration {
     @Bean
-    public SampleService sampleService() {
-        return new SampleServiceImpl();
+    public PersonalDetailsService personalDetailsService() {
+        return new PersonalDetailsServiceImpl();
     }
 
     @Bean
