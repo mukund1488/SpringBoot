@@ -1,15 +1,16 @@
 package sample.spring.service;
 
-import sample.spring.exception.PersonalDetailsException;
+import sample.spring.exception.NoDataFoundException;
 import sample.spring.model.modify.ModifyPersonalDetailsRequest;
 import sample.spring.model.modify.ModifyPersonalDetailsResponse;
-import sample.spring.model.retrieve.RetrievePersonalDetailsResponse;
+import sample.spring.model.retrieve.RetrievePersonalDetailResponse;
+import sample.spring.model.retrieve.RetrievePersonalDetailsListResponse;
 
 public interface PersonalDetailsService {
 
-    RetrievePersonalDetailsResponse retrieveAllPersonalDetails() throws PersonalDetailsException;
+    RetrievePersonalDetailsListResponse retrieveAllPersonalDetails() throws NoDataFoundException;
 
-    RetrievePersonalDetailsResponse retrievePersonalDetailsById(Long id) throws PersonalDetailsException;
+    RetrievePersonalDetailResponse retrievePersonalDetailsById(Long id) throws NoDataFoundException;
 
     ModifyPersonalDetailsResponse deletePersonalDetailsById(Long id);
 

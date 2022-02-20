@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import sample.spring.exception.NoDataFoundException;
 import sample.spring.exception.PersonalDetailsError;
-import sample.spring.exception.PersonalDetailsException;
 import sample.spring.model.RequestStatus;
 import sample.spring.model.ResponseDetails;
 import sample.spring.model.modify.ModifyPersonalDetailsResponse;
@@ -15,14 +15,14 @@ import sample.spring.model.modify.ModifyPersonalDetailsResponse;
 @RestControllerAdvice
 public class PersonalDetailsAdvice {
 
-    @ExceptionHandler(PersonalDetailsException.class)
-    public ResponseEntity<ModifyPersonalDetailsResponse> handleSimpleServiceException(PersonalDetailsException exception) {
-        return new ResponseEntity<>(ModifyPersonalDetailsResponse.builder().requestStatus(RequestStatus.FAILURE).personalDetailsError(new PersonalDetailsError(exception.getMessage())).build(), exception.getHttpStatus());
+    @ExceptionHandler(NoDataFoundException.class)
+    public ResponseEntity<ModifyPersonalDetailsResponse> noDataFoundException(NoDataFoundException exception) {
+        return new ResponseEntity<>(ModifyPersonalDetailsResponse.builder().requestStatus(RequestStatus.NO_DATA_FOUND).personalDetailsError(new PersonalDetailsError(exception.getMessage())).build(), HttpStatus.OK);
     }
 
     @ExceptionHandler(EmptyResultDataAccessException.class)
     public ResponseEntity<ModifyPersonalDetailsResponse> handleEmptyResultDataException(EmptyResultDataAccessException exception) {
-        return new ResponseEntity<>(ModifyPersonalDetailsResponse.builder().requestStatus(RequestStatus.NO_DATA_FOUND).personalDetailsError(new PersonalDetailsError(exception.getMessage())).build(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ModifyPersonalDetailsResponse.builder().requestStatus(RequestStatus.NO_DATA_FOUND).personalDetailsError(new PersonalDetailsError(exception.getMessage())).build(), HttpStatus.OK);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

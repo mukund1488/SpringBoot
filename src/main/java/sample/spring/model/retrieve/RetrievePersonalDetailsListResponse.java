@@ -9,6 +9,6 @@ import java.util.List;
 
 @SuperBuilder
 @Data
-public class RetrievePersonalDetailsResponse extends ResponseDetails {
+public class RetrievePersonalDetailsListResponse extends ResponseDetails {
     private List<PersonalDetails> personalDetailsList;
 }

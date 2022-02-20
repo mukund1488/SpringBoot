@@ -7,11 +7,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import sample.spring.model.modify.ModifyPersonalDetailsRequest;
 import sample.spring.model.modify.ModifyPersonalDetailsResponse;
-import sample.spring.model.retrieve.RetrievePersonalDetailsResponse;
+import sample.spring.model.retrieve.RetrievePersonalDetailResponse;
+import sample.spring.model.retrieve.RetrievePersonalDetailsListResponse;
 import sample.spring.service.PersonalDetailsService;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @Validated
@@ -22,13 +23,13 @@ public class PersonalDetailsController {
 
     @SneakyThrows
     @RequestMapping(method = RequestMethod.GET, path = "/getById", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RetrievePersonalDetailsResponse retrievePersonalDetailsById(@NotBlank @RequestParam Long id) {
+    public RetrievePersonalDetailResponse retrievePersonalDetailsById(@NotNull @RequestParam Long id) {
         return personalDetailsService.retrievePersonalDetailsById(id);
     }
 
     @SneakyThrows
     @RequestMapping(method = RequestMethod.GET, path = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
-    public RetrievePersonalDetailsResponse retrieveAllPersonalDetails() {
+    public RetrievePersonalDetailsListResponse retrieveAllPersonalDetails() {
         return personalDetailsService.retrieveAllPersonalDetails();
     }
 
